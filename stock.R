@@ -14,19 +14,27 @@ return(df)
 
 stock_graph1 <- function(df)
 {
-g <- ggplot(stock_data,aes(x=stock_data$Date,y=stock_data$Close)) + geom_line(col="red")
+g <- ggplot(stock_data,aes(x=stock_data$Date,y=stock_data$Close)) + geom_line(col="firebrick")
 return(g)
 }
 
 stock_graph2 <- function(df)
 {
-g1 <- ggplot(stock_data,aes(x=stock_data$Date,y=stock_data$Close)) + geom_point(col="yellow")
-return(g1)
+g <- ggplot(stock_data,aes(x=stock_data$Date,y=stock_data$Close)) + geom_point(col="olivedrab")
+return(g)
+}
+
+stock_graph3 <- function(df)
+{
+g <- ggplot(stock_data,aes(x=stock_data$Date,y=stock_data$Close)) + geom_point(col="olivedrab") + geom_line(col="red") + geom_smooth(size=0.3)
+return(g)
 }
 
 url <- 'http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=2&e=10&f=2016&g=d&a=3&b=12&c=1996&ignore=.csv'
 df <- get_stock(url)
 a1 <- stock_graph1(df)
 a2 <- stock_graph2(df)
+a3 <- stock_graph3(df)
 a1
 a2
+a3
