@@ -7,7 +7,16 @@
 get_stock <- function(url)
 {
 text <- getURL(url)
-df <- read.csv(textConnection(text))
+
+#unoptimized for large file retrieval
+#df <- read.csv(textConnection(text))
+
+#optimized for large file retrieval
+df1 <- read.csv(textConnection(text),nrows=5)
+classes <- sapply(df1,class)
+df <- read.csv(textConnection(text),colClasses=classes)
+
+
 df$Date <- as.Date(df$Date,format="%Y-%m-%d")
 return(df)
 }
