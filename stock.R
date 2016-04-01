@@ -23,19 +23,19 @@ return(df)
 
 stock_graph1 <- function(df)
 {
-g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_line(col="firebrick")
+g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_line(col="firebrick") + xlab("Time") + ylab("Stock price in USD") + ggtitle("Yahoo! Inc. (YHOO) -NasdaqGS")
 return(g)
 }
 
 stock_graph2 <- function(df)
 {
-g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_point(col="olivedrab")
+g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_point(col="olivedrab") + xlab("Time") + ylab("Stock price in USD") + ggtitle("Yahoo! Inc. (YHOO) -NasdaqGS")
 return(g)
 }
 
 stock_graph3 <- function(df)
 {
-g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_point(col="olivedrab") + geom_line(col="red") + geom_smooth(size=0.3)
+g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_point(col="olivedrab") + geom_line(col="red") + geom_smooth(size=0.3) + xlab("Time") + ylab("Stock price in USD") + ggtitle("Yahoo! Inc. (YHOO) -NasdaqGS")
 return(g)
 }
 
