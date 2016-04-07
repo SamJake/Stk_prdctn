@@ -14,25 +14,16 @@ df$Date <- as.Date(df$Date,format="%m/%d/%Y")
 df_dt <- df[[1,1]]
 y <- substr(df_dt,1,4)
 
-x1 <- "-02-15"
-x2 <- "-05-15"
-x3 <- "-08-15"
-x4 <- "-11-15"
 
-x1 <- paste(y,x1,sep="")
-x2 <- paste(y,x2,sep="")
-x3 <- paste(y,x3,sep="")
-x4 <- paste(y,x4,sep="")
+q_mid <- c("-02-15","-05-15","-08-15","-11-15")
+q_mid <- paste(y,q_mid,sep="")
+q_mid <- as.Date(q_mid,format = "%Y-%m-%d")
 
-x1 <- as.Date(x1,format="%Y-%m-%d")
-x2 <- as.Date(x2,format="%Y-%m-%d")
-x3 <- as.Date(x3,format="%Y-%m-%d")
-x4 <- as.Date(x4,format="%Y-%m-%d")
+q_start <- c("-01-01","-04-01","-07-01","-10-01")
+q_start <- paste(y,q_start,sep="")
+q_start <- as.Date(q_start,format = "%Y-%m-%d")
 
-if((df_dt > x1) && (df_dt > x2) & (df_dt > x3)
-{
-	q1 
-	q2
-	q3
-	q4
-}
+q_end <- c("-02-15","-05-15","-08-15","-11-15")
+q_end <- paste(y,q_end,sep="")
+q_end <- as.Date(q_end,format = "%Y-%m-%d")
+
