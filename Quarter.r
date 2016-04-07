@@ -37,4 +37,18 @@ q_end <- q_start + months(3) - days(1)
 q_end[1] <- df_dt
 
 
-q_df <- subset(df,df$Date>=q_start[1] & df$Date<=q_end[1])
+q1_df <- subset(df,df$Date>=q_start[1] & df$Date<=q_end[1])
+q2_df <- subset(df,df$Date>=q_start[2] & df$Date<=q_end[2])
+q3_df <- subset(df,df$Date>=q_start[3] & df$Date<=q_end[3])
+q4_df <- subset(df,df$Date>=q_start[4] & df$Date<=q_end[4])
+
+
+m1 <- matrix(1,length(q1_df$Date))
+m2 <- matrix(2,length(q2_df$Date))
+m3 <- matrix(3,length(q3_df$Date))
+m4 <- matrix(4,length(q4_df$Date))
+
+g1 <- ggplot(q1_df,aes(x=Date,y=Close)) + geom_line(size=1)
+g2 <- ggplot(q2_df,aes(x=Date,y=Close)) + geom_line(size=1)
+g3 <- ggplot(q3_df,aes(x=Date,y=Close)) + geom_line(size=1)
+g4 <- ggplot(q4_df,aes(x=Date,y=Close)) + geom_line(size=1)
