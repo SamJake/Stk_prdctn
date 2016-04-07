@@ -35,3 +35,6 @@ q_start <- c(frst_q_strt_dt,frst_q_strt_dt -months(3),frst_q_strt_dt -months(6),
 
 q_end <- q_start + months(3) - days(1)
 q_end[1] <- df_dt
+
+
+q_df <- subset(df,df$Date>=q_start[1] & df$Date<=q_end[1])
