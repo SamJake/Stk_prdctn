@@ -4,16 +4,15 @@
 #install.packages("ggplot2")
 #library("ggplot2")
 
-get_stock <- function(url)
+get_stock <- function(symbol)
 {
+url <- "https://finance.yahoo.com/q?s="
+url <- paste(url,symbol,sep="")
 text <- getURL(url)
 
-#unoptimized for large file retrieval
-#df <- read.csv(textConnection(text))
-
 #optimized for large file retrieval
-df1 <- read.csv(textConnection(text),nrows=5)
-classes <- sapply(df1,class)
+classes <- c("character","numeric","numeric","numeric","numeric","integer","numeric")
+names(classes) <- c("Trade_dt","Open","High","Low","Close","Volume","Adj Close")
 df <- read.csv(textConnection(text),colClasses=classes)
 
 
@@ -39,8 +38,8 @@ g <- ggplot(df,aes(x=df$Date,y=df$Close)) + geom_point(col="olivedrab") + geom_l
 return(g)
 }
 
-url <- 'http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=2&e=10&f=2016&g=d&a=3&b=12&c=1996&ignore=.csv'
-df <- get_stock(url)
+#url <- 'http://real-chart.finance.yahoo.com/table.csv?s=YHOO&d=2&e=10&f=2016&g=d&a=3&b=12&c=1996&ignore=.csv'
+df <- get_stock("YHOO")
 a1 <- stock_graph1(df)
 a2 <- stock_graph2(df)
 a3 <- stock_graph3(df)
