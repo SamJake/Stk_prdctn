@@ -48,7 +48,25 @@ m2 <- matrix(2,length(q2_df$Date))
 m3 <- matrix(3,length(q3_df$Date))
 m4 <- matrix(4,length(q4_df$Date))
 
-g1 <- ggplot(q1_df,aes(x=Date,y=Close)) + geom_line(size=1)
-g2 <- ggplot(q2_df,aes(x=Date,y=Close)) + geom_line(size=1)
-g3 <- ggplot(q3_df,aes(x=Date,y=Close)) + geom_line(size=1)
-g4 <- ggplot(q4_df,aes(x=Date,y=Close)) + geom_line(size=1)
+#g1 <- ggplot(q1_df,aes(x=Date,y=Close)) + geom_line(size=1)
+#g2 <- ggplot(q2_df,aes(x=Date,y=Close)) + geom_line(size=1)
+#g3 <- ggplot(q3_df,aes(x=Date,y=Close)) + geom_line(size=1)
+#g4 <- ggplot(q4_df,aes(x=Date,y=Close)) + geom_line(size=1)
+
+
+q1 <- cbind(q1_df,m1)
+q2 <- cbind(q2_df,m2)
+q3 <- cbind(q3_df,m3)
+q4 <- cbind(q4_df,m4)
+
+
+colnames(q1)[8] <- "m"
+colnames(q2)[8] <- "m"
+colnames(q3)[8] <- "m"
+colnames(q4)[8] <- "m"
+
+
+Q <- rbind(q1,q2,q3,q4)
+
+g <- ggplot(Q,aes(x=Date,y=Close,color=factor(m))) + geom_line(size=1.2)
+g <- g + ylab("Stock price in INR") + xlab("Last 4 quarters") + ggtitle("NSE: SWELECTES")
