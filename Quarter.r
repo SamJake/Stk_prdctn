@@ -76,19 +76,21 @@ Q <- rbind(q1,q2,q3,q4)
 return(Q)
 }
 
-stock_q_graph <- function(Q)
+stock_q_graph <- function(Q,ex,sym)
 {
+t <- paste(ex,": ",sym)
 g1 <- ggplot(Q,aes(x=d,y=Adj.Close,color=factor(m))) + geom_line(size=1.2)
 g1 <- g1 + scale_color_manual(values=c("red2","yellow3","yellowgreen","lightblue2"),breaks=c("1","2","3","4"),labels=c("Q1(Current)","Q2","Q3","Q4(Oldest)"),name="Quarters:")
-g1 <- g1 + xlab("Days in a Quarter") + ylab("Stock price in USD") + ggtitle("NYSE: BRK-A")
+g1 <- g1 + xlab("Days in a Quarter") + ylab("Stock price in USD") + ggtitle(t)
 return(g1)
 }
 
-stock_q_graph_smooth <- function(Q)
+stock_q_graph_smooth <- function(Q,ex,sym)
 {
+t <- paste(ex,": ",sym)
 g2 <- ggplot(Q,aes(x=d,y=Adj.Close,color=factor(m))) + geom_smooth(size=1.2)
 g2 <- g2 + scale_color_manual(values=c("red2","yellow3","yellowgreen","lightblue2"),breaks=c("1","2","3","4"),labels=c("Q1(Current)","Q2","Q3","Q4(Oldest)"),name="Quarters:")
-g2 <- g2 + xlab("Days in a Quarter") + ylab("Stock price in USD") + ggtitle("NYSE: BRK-A")
+g2 <- g2 + xlab("Days in a Quarter") + ylab("Stock price in USD") + ggtitle(t)
 return(g2)
 }
 
