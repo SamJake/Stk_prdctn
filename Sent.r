@@ -37,15 +37,20 @@ fil_sF_DELL <- sF_DELL[grepl(stock,sF_DELL,ignore.case = FALSE)]
 fil_sN_Dell <- sN_Dell[grepl(company,sN_Dell,ignore.case = FALSE)]
 
 
-hF_DELL <- sapply(F_DELL,FUN = function(x){attr(x,"heading")})
-hN_Dell <- sapply(N_Dell,FUN = function(x){attr(x,"heading")})
+# hF_DELL <- sapply(F_DELL,FUN = function(x){attr(x,"heading")})
+# hN_Dell <- sapply(N_Dell,FUN = function(x){attr(x,"heading")})
 
 
-dF_DELL <- sapply(F_DELL, FUN = function(x){attr(x,"description")})
-dN_Dell <- sapply(N_Dell, FUN = function(x){attr(x,"description")})
+# dF_DELL <- sapply(F_DELL, FUN = function(x){attr(x,"description")})
+# dN_Dell <- sapply(N_Dell, FUN = function(x){attr(x,"description")})
 
 #heading => id
 #description => id
 
 fil_dF_DELL <- dF_DELL[grepl(stock,dF_DELL,ignore.case = FALSE)]
 fil_dN_Dell <- dN_Dell[grepl(company,dN_Dell,ignore.case = FALSE)]
+
+meta(F_DELL[[1]])
+str(meta(F_DELL[[1]]))
+meta(F_DELL[[1]])$heading
+meta(F_DELL[[1]])$description
