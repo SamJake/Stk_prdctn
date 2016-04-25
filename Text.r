@@ -9,7 +9,7 @@ library("XML")
 library("RCurl")
 
 
-GOOGL_fin <- WebCorpus(GoogleFinanceSource,"GOOGL")
+GOOGL_fin <- WebCorpus(GoogleFinanceSource("GOOGL"))
 str(GOOGL_fin)
 class(GOOGL_fin)
 meta(GOOGL_fin)
@@ -20,7 +20,7 @@ GOOGL_fin <- corpus.update(GOOGL_fin)
 GOOGLnews <- corpus.update(GOOGLnews)
 
 
-GOOGLnews <- WebCorpus(GoogleFinanceSource,"GOOGL")
+GOOGLnews <- WebCorpus(GoogleFinanceSource("GOOGL"))
 str(GOOGLnews)
 class(GOOGLnews)
 meta(GOOGLnews)
