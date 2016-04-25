@@ -12,26 +12,30 @@ library("RCurl")
 library("openNLP")
 library("qdap")
 
+stock <- "DELL"
+company <- "Dell"
+
+#assign(paste("F_",stock,sep=""),WebCorpus(GoogleFinanceSource(stock)))
 
 
-GOOGL_fin <- WebCorpus(GoogleFinanceSource("GOOGL"))
+F_DELL <- WebCorpus(GoogleFinanceSource("GOOGL"))
 
 #GOOGL_fin <- corpus.update(GOOGL_fin)
 
+#assign(paste("N_",company,sep=""),WebCorpus(GoogleNewsSource(company)))
 
-GOOGL_news <- WebCorpus(GoogleNewsSource("Google"))
+N_Dell <- WebCorpus(GoogleNewsSource("Google"))
 
 #GOOGL_news <- corpus.update(GOOGLnews)
 
 
 
-stock <- "GOOGL"
+sF_DELL <- sent_detect(F_DELL)
+sN_Dell <- sent_detect(N_Dell)
 
-sGOOGL_fin <- sent_detect(GOOGL_fin)
-sGOOGL_news <- sent_detect(GOOGL_news)
-
-fil_news <- sGOOGL_news[grepl("Google",sGOOGL_news,ignore.case = FALSE)]
-fil_fin <- sGOOGL_fin[grepl(stock,sGOOGL_fin,ignore.case = FALSE)]
+fil_sF_DELL <- sF_DELL[grepl(stock,sF_DELL,ignore.case = FALSE)]
+fil_sN_Dell <- sN_Dell[grepl(company,sN_Dell,ignore.case = FALSE)]
 
 
-sapply(sGOOGL_fin,FUN = function(x){attr(x,"Heading")})
+hF_DELL <- sapply(sF_DELL,FUN = function(x){attr(x,"Heading")})
+hN_Dell <- sapply(sN_Dell,FUN = function(x){attr(x,"Heading")})
