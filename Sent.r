@@ -12,7 +12,7 @@ library("RCurl")
 library("openNLP")
 library("qdap")
 
-stock <- "DELL"
+stock <- "NASDAQ:DELL"
 company <- "Dell"
 
 #assign(paste("F_",stock,sep=""),WebCorpus(GoogleFinanceSource(stock)))
@@ -54,3 +54,20 @@ meta(F_DELL[[1]])
 str(meta(F_DELL[[1]]))
 meta(F_DELL[[1]])$heading
 meta(F_DELL[[1]])$description
+
+
+
+heading <- vector()
+for (i in 1:length(F_DELL$content))
+{
+	heading[i] <- meta(F_DELL[[i]])$heading
+}
+
+
+
+
+description <- vector()
+for ( i in 1:length(F_DELL$content))
+{
+    description[i] <- meta(F_DELL[[i]])$description
+} 
