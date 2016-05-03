@@ -23,22 +23,22 @@ if (type==1)
 {
 	corpus <- WebCorpus(GoogleFinanceSource(stock))
 	#GOOGL_fin <- corpus.update(GOOGL_fin)
-}
-else if(type==2)
+}else 
 {
 	corpus <- WebCorpus(GoogleNewsSource(stock))
 	#GOOGL_news <- corpus.update(GOOGLnews)
 }
 
 	sentences <- sent_detect(corpus)
+	#sentences <- gsub("[[:punct:]]","",sentences)
 	
-	headings <- vector()
+	headings <- vector(length=length(corpus$content))
 	for (i in 1:length(corpus$content))
 	{
 		headings[i] <- meta(corpus[[i]])$heading
 	}
 
-	descriptions <- vector()
+	descriptions <- vector(length=length(corpus$content))
 	for ( i in 1:length(corpus$content))
 	{
 		descriptions[i] <- meta(corpus[[i]])$description
@@ -46,8 +46,11 @@ else if(type==2)
 
 	select_sentences <- sentences[grepl(stock,sentences,ignore.case = FALSE)]
 	select_headings <- headings[grepl(stock,headings,ignore.case = FALSE)]
-	select_descriptions <- descriptions[grepl(stock,descriptions,ignore.case = FALSE]
+	select_descriptions <- descriptions[grepl(stock,descriptions,ignore.case = FALSE)]
 
+	select_sentences <- gsub("[[:punct:]]"," ",select_sentences)
+	select_headings <- gsub("[[:punct:]]"," ",select_headings)
+	select_descriptions <- gsub("[[:punct:]]"," ",select_descriptions)
 
 }
 
